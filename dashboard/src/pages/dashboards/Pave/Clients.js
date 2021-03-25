@@ -15,7 +15,7 @@ import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 
-import userIds from '../../tables/user_ids.json';
+import users from '../../../data/users.json';
 import Single from './Single';
 
 const tableColumns = [
@@ -55,7 +55,7 @@ const ClientsList = (props) => {
           keyField="name"
           bootstrap4
           bordered={false}
-          data={userIds}
+          data={users}
           columns={tableColumns}
           search
         >
@@ -108,7 +108,5 @@ const Clients = () => {
     </Container>
   )
 };
-
-
 
 export default Clients;
