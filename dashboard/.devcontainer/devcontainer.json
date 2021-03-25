@@ -16,7 +16,8 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"dbaeumer.vscode-eslint",
-		"eg2.vscode-npm-script"
+		"eg2.vscode-npm-script",
+		"christian-kohler.npm-intellisense"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],

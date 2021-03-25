@@ -5,7 +5,6 @@ import { NavLink, withRouter } from "react-router-dom";
 import { Badge, Collapse } from "reactstrap";
 import PerfectScrollbar from "react-perfect-scrollbar";
 
-import { Box } from "react-feather";
 import routes from "../routes/index";
 
 const initOpenRoutes = (location) => {
@@ -116,8 +115,8 @@ const Sidebar = ({ location, sidebar, layout }) => {
       <div className="sidebar-content">
         <PerfectScrollbar>
           <a className="sidebar-brand" href="/">
-            <Box className="align-middle text-primary" size={24} />{" "}
-            <span className="align-middle">AppStack</span>
+            {/* <Box className="align-middle text-primary" size={24} />{" "} */}
+            <span className="align-middle">pave.dev</span>
           </a>
 
           <ul className="sidebar-nav">

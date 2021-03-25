@@ -54,21 +54,15 @@
 @import "4-utilities/z-index";
 
 // 3rd party plugins
-@import "react-quill/dist/quill.bubble";
-@import "react-quill/dist/quill.snow";
 @import 'react-redux-toastr/src/styles/index';
 @import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min';
-@import "jvectormap-next/jquery-jvectormap";
 @import "react-dragula/dist/dragula";
-@import "@fullcalendar/bootstrap/main";
 @import "smartwizard/dist/css/smart_wizard_all";
 
 // 3rd party plugin styles
-@import "5-vendor/fullcalendar";
 @import "5-vendor/perfect-scrollbar";
 @import "5-vendor/quill";
 @import "5-vendor/react-bootstrap-table";
-@import "5-vendor/react-datetime";
 @import "5-vendor/react-select";
 @import "5-vendor/toastr";
 @import "5-vendor/wizard";
