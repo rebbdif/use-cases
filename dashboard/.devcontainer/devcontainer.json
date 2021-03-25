@@ -17,7 +17,8 @@
 	"extensions": [
 		"dbaeumer.vscode-eslint",
 		"eg2.vscode-npm-script",
-		"christian-kohler.npm-intellisense"
+		"christian-kohler.npm-intellisense",
+		"codeandstuff.package-json-upgrade"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
