@@ -19,7 +19,7 @@ function receiveExpendituresActions(json) {
 }
 
 export function fetchRecurringExpenditures(userId) {
-  const url = `${REACT_APP_API_ENDPOINT}/v1/recurring_expenditures`;
+  const url = `${REACT_APP_API_ENDPOINT}/recurring_expenditures`;
 
   return function(dispatch) {
     dispatch(requestExpendituresActions())
