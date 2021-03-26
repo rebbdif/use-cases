@@ -6,7 +6,7 @@ services:
   web:
     image: pave-dashboard:latest
     ports:
-      - "5000:3000"
+      - "3000:3000"
     stdin_open: true # docker run -i
     tty: true # docker run -t
     environment:
