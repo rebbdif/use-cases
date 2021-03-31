@@ -1,4 +1,4 @@
-## Pave Finacial Insights sample projects
+## Pave Financial Insights sample projects
 
 This repo contains a few sample projects demonstrating capabilities
 of [The Pave Cashflow Insights API](https://pave.dev).
