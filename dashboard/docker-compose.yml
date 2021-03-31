@@ -13,4 +13,4 @@ services:
       - REACT_APP_API_ENDPOINT=https://api.pave.dev
       - REACT_APP_API_KEY=YOUR_API_KEY
     volumes:
-      - ./data:/app/src/data:ro
+      - ./docker-volume:/app/src/data:ro

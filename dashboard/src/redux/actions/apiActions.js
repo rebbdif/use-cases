@@ -25,13 +25,8 @@ export function fetchRecurringExpenditures(userId) {
     dispatch(requestExpendituresActions())
     const options = {
       method: 'POST',
-      headers: {
-        'x-api-key': REACT_APP_API_KEY
-      },
-      redirect: 'follow',
-      body: JSON.stringify({
-        user_id: userId
-      })
+      headers: {'x-api-key': REACT_APP_API_KEY},
+      body: JSON.stringify({user_id: userId})
     }
 
     fetch(url, options)
