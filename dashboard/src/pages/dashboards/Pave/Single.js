@@ -59,7 +59,8 @@ const ExpendituresTable = ({ recurringExpenditures, loading }) => {
           normalized_frequency: el.normalized_frequency,
           transaction_delta_amount: el.transaction_delta_amount,
           transaction_delta_percent: el.transaction_delta_percent,
-          avg_period_days: el.avg_period_days
+          avg_period_days: el.avg_period_days,
+          category: el.category
         }
       }));
   }, [recurringExpenditures, loading]);
@@ -94,7 +95,9 @@ const expenditureTableColumns = [
   {
     dataField: "transaction_count",
     text: "Transaction Count",
-    sort: true
+    sort: true,
+    align: 'right',
+    headerAlign: 'right',
   },
   {
     dataField: "last_transaction_date",
@@ -155,6 +158,11 @@ const expenditureTableColumns = [
         return <span className="text-muted"> {numeral(cell).format('$0,0.00')}</span>
       }
     }
+  },
+  {
+    dataField: "category",
+    text: "Category",
+    sort: true
   },
   
 ]

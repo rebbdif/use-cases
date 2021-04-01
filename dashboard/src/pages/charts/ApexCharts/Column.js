@@ -1,15 +1,16 @@
 import React from "react";
 import Chart from "react-apexcharts";
 import { connect } from "react-redux";
-import {map} from 'lodash';
+import {map, groupBy} from 'lodash';
 import numeral from 'numeral'
 const ColumnChart = ({ theme, recurringExpenditures }) => {
+  const groupedData = groupBy(recurringExpenditures, (elem) => elem.category);
 
-  const sourceData = recurringExpenditures ? recurringExpenditures : []
-  const data = map(sourceData, (expenditure) => {
+  const sourceData = groupedData ? groupedData : []
+  const data = map(sourceData, (expenditures, category) => {
     return {
-      name: expenditure.normalized_merchant_name,
-      data: [expenditure.last_transaction_amount]
+      name: category,
+      data: [expenditures.reduce((accumulator, current) => accumulator + (current.last_transaction_amount || 0), 0)]
     }
   })
   
@@ -17,7 +18,7 @@ const ColumnChart = ({ theme, recurringExpenditures }) => {
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: "55%",
+        columnWidth: "25%",
         borderRadius: 8,
       }
     },
@@ -38,7 +39,7 @@ const ColumnChart = ({ theme, recurringExpenditures }) => {
     },
     xaxis: {
       categories: [
-        "Spending",
+        "Spending By Category",
       ]
     },
     yaxis: {
