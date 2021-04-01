@@ -11,7 +11,7 @@ import {
   Row,
 } from "reactstrap";
 import dayjs from 'dayjs'
-
+import {ArrowUp, ArrowDown } from 'react-feather'
 import Loader from '../../../components/Loader';
 import Column from '../../charts/ApexCharts/Column'
 import Pie from '../../charts/ApexCharts/Pie'
@@ -57,6 +57,9 @@ const ExpendituresTable = ({ recurringExpenditures, loading }) => {
           last_transaction_amount: el.last_transaction_amount,
           last_transaction_date: el.last_transaction_date,
           normalized_frequency: el.normalized_frequency,
+          transaction_delta_amount: el.transaction_delta_amount,
+          transaction_delta_percent: el.transaction_delta_percent,
+          avg_period_days: el.avg_period_days
         }
       }));
   }, [recurringExpenditures, loading]);
@@ -100,9 +103,18 @@ const expenditureTableColumns = [
     hidden: true
   },
   {
+    dataField: "avg_period_days",
+    text: "Average Days Between Transactions",
+    sort: true,
+    align: 'right',
+    headerAlign: 'right',
+  },
+  {
     dataField: "normalized_frequency",
     text: "Frequency",
     sort: true,
+    align: 'right',
+    headerAlign: 'right',
   },
   {
     dataField: "last_transaction_amount",
@@ -111,6 +123,38 @@ const expenditureTableColumns = [
     align: 'right',
     headerAlign: 'right',
     formatter: (cell, row) => { return numeral(cell).format('$0,0.00')}
+  },
+  {
+    dataField: "transaction_delta_percent",
+    text: "% Change",
+    sort: true,
+    align: 'right',
+    headerAlign: 'right',
+    formatter: (cell, row) => { 
+      if (cell > 0) {
+        return <span className="text-danger"> {numeral(cell).format('0.00%')} <ArrowUp size={12} /> </span>
+      } else if (cell < 0) {
+        return <span className="text-success"> {numeral(cell).format('0.00%')} <ArrowDown size={12} /></span>
+      } else {
+        return <span className="text-muted"> {numeral(cell).format('0.00%')}</span>
+      }
+    }
+  },
+  {
+    dataField: "transaction_delta_amount",
+    text: "Transaction Delta",
+    sort: true,
+    align: 'right',
+    headerAlign: 'right',
+    formatter: (cell, row) => { 
+      if (cell > 0) {
+        return <span className="text-danger"> {numeral(cell).format('$0,0.00')} <ArrowUp size={12} /> </span>
+      } else if (cell < 0) {
+        return <span className="text-success"> {numeral(cell).format('$0,0.00')} <ArrowDown size={12} /></span>
+      } else {
+        return <span className="text-muted"> {numeral(cell).format('$0,0.00')}</span>
+      }
+    }
   },
   
 ]
