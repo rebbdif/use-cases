@@ -19,14 +19,13 @@ function receiveExpendituresActions(json) {
 }
 
 export function fetchRecurringExpenditures(userId) {
-  const url = `${REACT_APP_API_ENDPOINT}/recurring_expenditures`;
+  const url = `${REACT_APP_API_ENDPOINT}/users/${userId}/recurring_expenditures`;
 
   return function(dispatch) {
     dispatch(requestExpendituresActions())
     const options = {
-      method: 'POST',
-      headers: {'x-api-key': REACT_APP_API_KEY},
-      body: JSON.stringify({user_id: userId})
+      method: 'GET',
+      headers: {'x-api-key': REACT_APP_API_KEY}
     }
 
     fetch(url, options)
