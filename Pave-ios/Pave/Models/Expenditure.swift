@@ -23,18 +23,20 @@ struct Expenditure {
 	let normalizedFrequency: ExpenditureFrequency
 	
 	static func fromDTO(_ dto: ExpenditureDTO) -> Expenditure {
+		let currency = Currency(code: dto.isoCurrencyCode)
+		
 		return Expenditure(
-			category: dto.category,
+			category: dto.type,
 			merchantName: dto.normalizedMerchantName,
-			lastTransactionAmount: MoneyAmount(currency: Currency(code: dto.isoCurrencyCode), amount: dto.lastTransactionAmount),
-			lastTransactionDescription: dto.lastTransactionDescription,
-			lastTransactionDate: dto.lastTransactionDate,
-			previousTransactionAmount: MoneyAmount(currency: Currency(code: dto.isoCurrencyCode), amount: dto.previousTransactionAmount),
-			previousTransactionDate: dto.previousTransactionDate,
-			transactionDeltaAmount: MoneyAmount(currency: Currency(code: dto.isoCurrencyCode), amount: dto.transactionDeltaAmount),
-			transactionDeltaPercent: dto.transactionDeltaPercent,
-			avgAmount: MoneyAmount(currency: Currency(code: dto.isoCurrencyCode), amount: dto.avgAmount),
-			transactionCount: dto.transactionCount,
+			lastTransactionAmount: MoneyAmount(currency: currency, amount: dto.lastAmount),
+			lastTransactionDescription: dto.lastDescription,
+			lastTransactionDate: dto.lastDate,
+			previousTransactionAmount: MoneyAmount(currency: currency, amount: dto.previousAmount),
+			previousTransactionDate: dto.previousDate,
+			transactionDeltaAmount: MoneyAmount(currency: currency, amount: dto.deltaAmount),
+			transactionDeltaPercent: dto.deltaPercent,
+			avgAmount: MoneyAmount(currency: currency, amount: dto.avgAmount),
+			transactionCount: dto.count,
 			avgPeriodDays: dto.avgPeriodDays,
 			normalizedFrequency: dto.normalizedFrequency
 		)

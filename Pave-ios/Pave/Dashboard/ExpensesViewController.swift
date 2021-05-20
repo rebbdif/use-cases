@@ -7,6 +7,7 @@ protocol ExpensesDashboardView {
 }
 
 
+/// Shows expenses. Contains graph and cells with information about payments.
 class ExpensesViewController: UIViewController, ExpensesDashboardView {
 	
 	enum Sections: Int, RawRepresentable, CaseIterable {
@@ -22,12 +23,18 @@ class ExpensesViewController: UIViewController, ExpensesDashboardView {
 	private lazy var presenter: DashboardPresenterProtocol = ExpensesDashboardPresenter(expensesView: self)
 	
 	// MARK: - UI
+	
+	private var headerReuseId = "ExpendituresSectionHeaderView"
 
 	private lazy var tableView: UITableView = {
 		let t = UITableView(frame: .zero)
 		t.translatesAutoresizingMaskIntoConstraints = false
 		t.register(ExpenditureCell.self, forCellReuseIdentifier: Sections.bills.reuseId)
 		t.register(ExpenditureCell.self, forCellReuseIdentifier: Sections.subscriptions.reuseId)
+		
+		t.sectionFooterHeight = 0
+		t.tableFooterView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: t.frame.width, height: 0)))
+
 		return t
 	}()
 	
@@ -123,7 +130,8 @@ extension ExpensesViewController: UITableViewDataSource, UITableViewDelegate {
 		case Sections.graph.rawValue:
 			let cell = GraphCell()
 			cell.setValuesForGraph([presenter.previousMonthExpenses, presenter.currentMonthExpenses])
-			cell.setTitle(presenter.currentMonthExpenses.total.string())
+			let amount = presenter.currentMonthExpenses.total.string()
+			cell.setTitle("You paid \(amount) for bills and subscriptions this month")
 			return cell
 		case Sections.bills.rawValue:
 			let item = presenter.currentMonthExpenses.bills[indexPath.row]
@@ -145,6 +153,7 @@ extension ExpensesViewController: UITableViewDataSource, UITableViewDelegate {
 		cell.setAmount(model.lastTransactionAmount)
 		cell.setLastDeltaAmount(model.transactionDeltaAmount)
 		cell.setImage(model.merchantNameAbbreviation.image())
+		cell.setSubtitle(model.normalizedFrequency.rawValue.byCapitalizingFirstLetter())
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -156,38 +165,53 @@ extension ExpensesViewController: UITableViewDataSource, UITableViewDelegate {
 		}
 	}
 	
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let view = ExpendituresSectionHeaderView(frame: .zero)
+		view.backgroundColor = UIColor(red: 217.0 / 255.0, green: 217.0 / 255.0, blue: 217.0 / 255.0, alpha: 1)
 		switch section {
 		case Sections.bills.rawValue:
-			return "Bills"
+			view.setTitle("Bills")
+			let total = presenter.currentMonthExpenses.billsTotal.string()
+			view.setSubtitle("You paid \(total) for bills")
 		case Sections.subscriptions.rawValue:
-			return "Subscriptions"
+			view.setTitle("Subscriptions")
+			let total = presenter.currentMonthExpenses.subscriptionsTotal.string()
+			view.setSubtitle("You paid \(total) for subscriptions")
 		default:
-			return nil
+			let v = UIView(frame: CGRect(origin: .zero, size: CGSize(width: tableView.frame.width, height: 0)))
+			return v
 		}
+		return view
 	}
 	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		switch section {
+		case Sections.bills.rawValue:
+			return 60
+		case Sections.subscriptions.rawValue:
+			return 60
+		default:
+			return 0
+		}
+	}
+
 	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		// we add ChartViewController to cell
 		if indexPath.section == Sections.graph.rawValue,
 		   let cell = cell as? GraphCell {
-			addChild(cell.dashboardViewController)
-			cell.dashboardViewController.didMove(toParent: self)
+			addChild(cell.chartViewController)
+			cell.chartViewController.didMove(toParent: self)
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		// we remove ChartViewController from cell
 		if indexPath.section == Sections.graph.rawValue,
 		   let cell = cell as? GraphCell {
-			cell.dashboardViewController.willMove(toParent: nil)
-			cell.dashboardViewController.removeFromParent()
+			cell.chartViewController.willMove(toParent: nil)
+			cell.chartViewController.removeFromParent()
 		}
 	}
 	
-	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-		if section == 2 {
-			return UIView(frame: CGRect(origin: .zero, size: CGSize(width: tableView.frame.width, height: 0)))
-		}
-		return nil
-	}
 }
 

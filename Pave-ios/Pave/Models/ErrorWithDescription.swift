@@ -12,3 +12,4 @@ struct SimpleError: ErrorWithDescription {
 	var errorDescription: String?
 
 }
+

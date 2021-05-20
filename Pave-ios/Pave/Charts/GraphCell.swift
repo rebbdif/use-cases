@@ -10,15 +10,15 @@ class GraphCell: UITableViewCell {
 	
 	func setValuesForGraph(_ values: [MonthExpenses]) {
 		let bars = values.map { DashboardValue(barName: $0.monthName, barHeight: $0.total.amount) }
-		self.dashboardViewController.setValues(bars)
+		self.chartViewController.setValues(bars)
 	}
 	
 	func setTitle(_ title: String?) {
-		self.dashboardViewController.titleLabel.text = title
+		self.chartViewController.titleLabel.text = title
 	}
 	
-	lazy var dashboardViewController: DatedLineChartViewController = {
-		let vc = DatedLineChartViewController()
+	lazy var chartViewController: ChartViewController = {
+		let vc = ChartViewController()
 		return vc
 	}()
 	
@@ -27,7 +27,7 @@ class GraphCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
-		let dashboardView = dashboardViewController.view!
+		let dashboardView = chartViewController.view!
 		dashboardView.translatesAutoresizingMaskIntoConstraints = false
 		contentView.addSubview(dashboardView)
 	}
@@ -41,7 +41,7 @@ class GraphCell: UITableViewCell {
 	}
 	
 	override func updateConstraints() {
-		let dashboardView = dashboardViewController.view!
+		let dashboardView = chartViewController.view!
 		NSLayoutConstraint.activate([
 			dashboardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
 			dashboardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),

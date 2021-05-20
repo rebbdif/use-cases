@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		769DD35ED031A34ECCD51125 /* Pods_Pave.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC684EF43C655E331D245524 /* Pods_Pave.framework */; };
+		8E0927A62659153700556216 /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0927A52659153700556216 /* StringExtentions.swift */; };
 		8E283ABB263861020071D831 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E283ABA263861020071D831 /* NetworkService.swift */; };
-		8E283AC626386BCC0071D831 /* DatedLineChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E283AC226386BCC0071D831 /* DatedLineChartViewController.xib */; };
-		8E283AC726386BCC0071D831 /* DatedLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E283AC326386BCC0071D831 /* DatedLineChartViewController.swift */; };
+		8E283AC726386BCC0071D831 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E283AC326386BCC0071D831 /* ChartViewController.swift */; };
 		8E283B0A263874760071D831 /* DateExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E283B09263874760071D831 /* DateExtentions.swift */; };
 		8E283B122639655E0071D831 /* GraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E283B112639655E0071D831 /* GraphCell.swift */; };
 		8E283B1726396B360071D831 /* ExpenditureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E283B1626396B360071D831 /* ExpenditureCell.swift */; };
@@ -20,6 +20,7 @@
 		8E490A1E263A04A500828080 /* ErrorWithDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E490A1D263A04A500828080 /* ErrorWithDescription.swift */; };
 		8E891E19263ABD4C00516599 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891E18263ABD4C00516599 /* InsetLabel.swift */; };
 		8E891E2E263B090200516599 /* MoneyAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E891E2D263B090200516599 /* MoneyAmount.swift */; };
+		8ECCCDD52656F8C400D34D8F /* ExpendituresSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECCCDD42656F8C400D34D8F /* ExpendituresSectionHeaderView.swift */; };
 		8EDEDC3526385B1C00CAA204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDEDC3426385B1C00CAA204 /* AppDelegate.swift */; };
 		8EDEDC3726385B1C00CAA204 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDEDC3626385B1C00CAA204 /* SceneDelegate.swift */; };
 		8EDEDC3926385B1C00CAA204 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDEDC3826385B1C00CAA204 /* ExpensesViewController.swift */; };
@@ -50,9 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E0927A52659153700556216 /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtentions.swift; sourceTree = "<group>"; };
 		8E283ABA263861020071D831 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		8E283AC226386BCC0071D831 /* DatedLineChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatedLineChartViewController.xib; sourceTree = "<group>"; };
-		8E283AC326386BCC0071D831 /* DatedLineChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatedLineChartViewController.swift; sourceTree = "<group>"; };
+		8E283AC326386BCC0071D831 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		8E283B09263874760071D831 /* DateExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtentions.swift; sourceTree = "<group>"; };
 		8E283B112639655E0071D831 /* GraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphCell.swift; sourceTree = "<group>"; };
 		8E283B1626396B360071D831 /* ExpenditureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenditureCell.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		8E891E18263ABD4C00516599 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		8E891E2D263B090200516599 /* MoneyAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyAmount.swift; sourceTree = "<group>"; };
 		8E891E32263C0CAC00516599 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8ECCCDD42656F8C400D34D8F /* ExpendituresSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpendituresSectionHeaderView.swift; sourceTree = "<group>"; };
 		8EDEDC3126385B1C00CAA204 /* Pave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDEDC3426385B1C00CAA204 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EDEDC3626385B1C00CAA204 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,8 +132,7 @@
 		8E283ABF26386BCC0071D831 /* Charts */ = {
 			isa = PBXGroup;
 			children = (
-				8E283AC226386BCC0071D831 /* DatedLineChartViewController.xib */,
-				8E283AC326386BCC0071D831 /* DatedLineChartViewController.swift */,
+				8E283AC326386BCC0071D831 /* ChartViewController.swift */,
 				8E283B112639655E0071D831 /* GraphCell.swift */,
 			);
 			path = Charts;
@@ -165,6 +166,7 @@
 				8EE9D218263C2A1F00098B39 /* MonthExpenses.swift */,
 				8E283B1626396B360071D831 /* ExpenditureCell.swift */,
 				8EDEDC3826385B1C00CAA204 /* ExpensesViewController.swift */,
+				8ECCCDD42656F8C400D34D8F /* ExpendituresSectionHeaderView.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -219,6 +221,7 @@
 				8E891E29263B019C00516599 /* Custom UI */,
 				8E9DE7F4263C2730001CF477 /* Models */,
 				8E490A182639D75400828080 /* DataProvider.swift */,
+				8E0927A52659153700556216 /* StringExtentions.swift */,
 				8E283B09263874760071D831 /* DateExtentions.swift */,
 				8EDEDC3A26385B1C00CAA204 /* Main.storyboard */,
 				8E891E32263C0CAC00516599 /* README.md */,
@@ -352,7 +355,6 @@
 				8EDEDC4126385B1F00CAA204 /* LaunchScreen.storyboard in Resources */,
 				8EDEDC3E26385B1F00CAA204 /* Assets.xcassets in Resources */,
 				8EDEDC3C26385B1C00CAA204 /* Main.storyboard in Resources */,
-				8E283AC626386BCC0071D831 /* DatedLineChartViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,11 +428,13 @@
 				8E283B1726396B360071D831 /* ExpenditureCell.swift in Sources */,
 				8E490A192639D75400828080 /* DataProvider.swift in Sources */,
 				8E490A1E263A04A500828080 /* ErrorWithDescription.swift in Sources */,
+				8ECCCDD52656F8C400D34D8F /* ExpendituresSectionHeaderView.swift in Sources */,
 				8E41B3FA263A903F004230D5 /* ImageFromString.swift in Sources */,
 				8E490A0C2639C87700828080 /* Expenditure.swift in Sources */,
 				8EDEDC3526385B1C00CAA204 /* AppDelegate.swift in Sources */,
-				8E283AC726386BCC0071D831 /* DatedLineChartViewController.swift in Sources */,
+				8E283AC726386BCC0071D831 /* ChartViewController.swift in Sources */,
 				8E283B0A263874760071D831 /* DateExtentions.swift in Sources */,
+				8E0927A62659153700556216 /* StringExtentions.swift in Sources */,
 				8E891E2E263B090200516599 /* MoneyAmount.swift in Sources */,
 				8E891E19263ABD4C00516599 /* InsetLabel.swift in Sources */,
 				8EDEDC3726385B1C00CAA204 /* SceneDelegate.swift in Sources */,

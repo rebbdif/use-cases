@@ -13,7 +13,15 @@ To start working with the app, put your API key and user_id in **NetworkService*
 
 
 ## Details
+
+### Architecture 
 App uses MVP pattern - app uses Controllers, that are driven by Presenters, that show Models. Presenters get data from DataProviders, that use stateless services.  
 More on MVP https://medium.com/omisoft/lightweight-mvp-architecture-in-ios-a16b3da01563
 
+### Classes
 For the implementation of network requests to API, see **NetworkService**.
+
+You can see dashboard implementation in **Dashboard** folder. 
+Everything you need for building a chart is in **Charts** folder. GraphCell is a container that contains **ChartViewController** that works with the chart. 
+
+Money amounts are represented by **Money Amount** class, that contains amount in a currency. Note, that if you try to sum two amounts in different currency, a **MoneyError** will be thrown. 

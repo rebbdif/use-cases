@@ -4,8 +4,8 @@ import Foundation
 protocol DashboardPresenterProtocol {
 	func getExpenses(for date: Date)
 	
-	var currentMonthExpenses: MonthExpenses {get}
-	var previousMonthExpenses: MonthExpenses {get}
+	var currentMonthExpenses: MonthExpenses {get set}
+	var previousMonthExpenses: MonthExpenses {get set}
 }
 
 
@@ -55,12 +55,14 @@ class ExpensesDashboardPresenter: DashboardPresenterProtocol {
 		}
 	}
 	
-	func processTwoLastMonthsExpenses(_ expenses: [Expenditure], currentDate: Date) -> (previousMonth: MonthExpenses, currentMonth: MonthExpenses) {
+	// this function gets expenses for two last month
+	private func processTwoLastMonthsExpenses(_ expenses: [Expenditure], currentDate: Date) -> (previousMonth: MonthExpenses, currentMonth: MonthExpenses) {
 		
 		var currentMonthExpenses = MonthExpenses(monthDate: currentDate)
 		var previoustMonthExpenses = MonthExpenses(monthDate: currentDate.oneMonthAgo)
 		
 		for transaction in expenses {
+			// if the transaction is from current month
 			if transaction.lastTransactionDate.isEqual(to: currentDate, toGranularity: Calendar.Component.month) {
 				currentMonthExpenses.allExpenditures.append(transaction)
 				do {
@@ -69,6 +71,7 @@ class ExpensesDashboardPresenter: DashboardPresenterProtocol {
 					print("skipped adding \(transaction), because it has different currency")
 				}
 			}
+			// if the transaction is from previous month
 			if transaction.lastTransactionDate.isEqual(to: currentDate.oneMonthAgo, toGranularity: Calendar.Component.month) {
 				previoustMonthExpenses.allExpenditures.append(transaction)
 				do {

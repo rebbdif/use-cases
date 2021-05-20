@@ -4,6 +4,7 @@ import UIKit
 
 extension String {
 	
+	// we generate image from string 
 	func image(size: CGSize = CGSize(width: 50, height: 50), textSize: Int = 18, textColor: UIColor = UIColor.white) -> UIImage? {
 		// we generate random color depending on string contents
 		let backgroundColor = UIColor(

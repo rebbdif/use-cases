@@ -65,18 +65,18 @@ extension DateFormatter {
 /// This is a data transfer object for Expenditure. Data from server gets deserialised into it.
 /// Do not use for other reasons than serialization or deserialization. Use Expenditure
 struct ExpenditureDTO: Decodable  {
-	let category: ExpenditureCategory
+	let type: ExpenditureCategory
 	let normalizedMerchantName: String
-	let lastTransactionAmount: Double
-	let lastTransactionDescription: String
-	let lastTransactionDate: Date
-	let previousTransactionAmount: Double
-	let previousTransactionDate: Date
-	let transactionDeltaAmount: Double
-	let transactionDeltaPercent: Double
+	let lastAmount: Double
+	let lastDescription: String
+	let lastDate: Date
+	let previousAmount: Double
+	let previousDate: Date
+	let deltaAmount: Double
+	let deltaPercent: Double
 	let avgAmount: Double
 	let isoCurrencyCode: String
-	let transactionCount: Int
+	let count: Int
 	let avgPeriodDays: Double
 	let normalizedFrequency: ExpenditureFrequency
 }

@@ -22,22 +22,21 @@ class NetworkService {
 	}
 	
 	var token: String {
-		return "jrEd8yahWl4JXpgKIY1LAJHAyJ2sN4soF48AWsUz"
+		return <#insert token here#>
 	}
 	
 	var baseURL: String = "https://api.pave.dev/v1"
 
-	var userId: String = "user_294"
+	var userId: String = <#insert user_id here#>
 	
 	typealias NetworkServiceCompletion = (Result<Data, NetworkServiceError>) -> ()
 	
 	func performRequest(_ request: NetworkService.Method, completion: @escaping NetworkServiceCompletion) {
-		let url = URL(string: "\(baseURL)/\(Method.recurringExpenditures.rawValue)")!
+		let url = URL(string: "\(baseURL)/users/\(userId)/\(Method.recurringExpenditures.rawValue)")!
 		var request = URLRequest(url: url)
-		request.httpMethod = "POST"
+		request.httpMethod = "GET"
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		request.addValue(token, forHTTPHeaderField: "x-api-key")
-		request.httpBody =  try? JSONSerialization.data(withJSONObject: ["user_id": userId], options: .prettyPrinted)
 		
 		let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
 			guard let response = response as? HTTPURLResponse else {
