@@ -10,14 +10,14 @@ struct DashboardValue {
 }
 
 
-/// View controller that manages graph
+/// Draws and manages chart
 class ChartViewController: UIViewController {
 	
 	// MARK: - Public
 	
-	/// Use this method to set values you want to display in the graph
+	/// Use this method to set values you want to display in the chart.
+	/// Chart will update itself when you set these new values
 	func setValues(_ bars: [DashboardValue]) {
-		// todo: add context here
 		let dataEntries: [ChartDataEntry] = bars.enumerated().map { index, bar in
 			return BarChartDataEntry(x: Double(index), y: bar.barHeight)
 		}
