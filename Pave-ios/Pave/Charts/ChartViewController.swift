@@ -13,6 +13,32 @@ struct DashboardValue {
 /// View controller that manages graph
 class ChartViewController: UIViewController {
 	
+	// MARK: - Public
+	
+	/// Use this method to set values you want to display in the graph
+	func setValues(_ bars: [DashboardValue]) {
+		// todo: add context here
+		let dataEntries: [ChartDataEntry] = bars.enumerated().map { index, bar in
+			return BarChartDataEntry(x: Double(index), y: bar.barHeight)
+		}
+		
+		let dataSet = BarChartDataSet(entries: dataEntries, label: "")
+		dataSet.colors = [UIColor(red: 56.0/255.0, green: 76.0/255.0, blue: 219.0/255.0, alpha: 1)]
+		dataSet.drawValuesEnabled = false
+		
+		let chartData = BarChartData(dataSet: dataSet)
+		chartData.barWidth = 0.33
+		
+		chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: bars.map {$0.barName})
+		chartView.xAxis.labelCount = bars.count
+		
+		chartView.data = chartData
+		
+		chartView.notifyDataSetChanged()
+		
+		chartView.animate(xAxisDuration: 0.2, yAxisDuration: 0.2, easingOption: .linear)
+	}
+	
 	lazy var titleLabel: UILabel = {
 		let l = UILabel()
 		l.numberOfLines = 0
@@ -73,26 +99,5 @@ class ChartViewController: UIViewController {
 		])
 	}
 	
-	func setValues(_ bars: [DashboardValue]) {
-		let dataEntries: [ChartDataEntry] = bars.enumerated().map { index, bar in
-			return BarChartDataEntry(x: Double(index), y: bar.barHeight)
-		}
-		
-		let dataSet = BarChartDataSet(entries: dataEntries, label: "")
-		dataSet.colors = [UIColor(red: 56.0/255.0, green: 76.0/255.0, blue: 219.0/255.0, alpha: 1)]
-		dataSet.drawValuesEnabled = false
-		
-		let chartData = BarChartData(dataSet: dataSet)
-		chartData.barWidth = 0.33
-		
-		chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: bars.map {$0.barName})
-		chartView.xAxis.labelCount = bars.count
-		
-		chartView.data = chartData
-		
-		chartView.notifyDataSetChanged()
-		
-		chartView.animate(xAxisDuration: 0.2, yAxisDuration: 0.2, easingOption: .linear)
-	}
 }
 

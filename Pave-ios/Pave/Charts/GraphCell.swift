@@ -8,11 +8,13 @@ class GraphCell: UITableViewCell {
 	
 	// MARK: - public
 	
+	/// Use this method to set values you want to display in the graph
 	func setValuesForGraph(_ values: [MonthExpenses]) {
 		let bars = values.map { DashboardValue(barName: $0.monthName, barHeight: $0.total.amount) }
 		self.chartViewController.setValues(bars)
 	}
 	
+	/// Use this method to set graph title
 	func setTitle(_ title: String?) {
 		self.chartViewController.titleLabel.text = title
 	}
